@@ -17,8 +17,8 @@ ClangPath=${MainClangZipPath}
 [[ "$(pwd)" != "${MainPath}" ]] && cd "${MainPath}"
 mkdir $ClangPath
 rm -rf $ClangPath/*
-wget -q  https://github.com/ZyCromerZ/Clang/releases/download/17.0.0-20230328-release/Clang-17.0.0-20230328.tar.gz -O "Clang-17.0.0-20230328.tar.gz"
-tar -xf Clang-17.0.0-20230328.tar.gz -C $ClangPath
+wget -q  https://gitlab.com/PixelOS-Devices/playgroundtc/-/archive/17/playgroundtc-17.tar.gz -O "playgroundtc-17.tar.gz"
+tar -xf playgroundtc-17.tar.gz -C $ClangPath
 
 mkdir $GCCaPath
 mkdir $GCCbPath
@@ -36,7 +36,7 @@ export KERNEL_NAME=$(cat "arch/arm64/configs/$DEVICE_DEFCONFIG" | grep "CONFIG_L
 export KBUILD_BUILD_USER=Novik-XIV
 export KBUILD_BUILD_HOST=N-XIV
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
-CLANG_VER="$("$ClangPath"/bin/clang --version | head -n 1 | perl -pe 's/\(http.*?\)//gs' | sed -e 's/  */ /g' -e 's/[[:space:]]*$//')"
+CLANG_VER="$("$ClangPath"/bin/clang --version | head -n 1 | sed -e 's/  */ /g' -e 's/[[:space:]]*$//' -e 's/^.*clang/clang/')"
 LLD_VER="$("$ClangPath"/bin/ld.lld --version | head -n 1)"
 export KBUILD_COMPILER_STRING="$CLANG_VER with $LLD_VER"
 DATE=$(date +"%F-%S")
