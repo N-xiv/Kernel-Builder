@@ -17,8 +17,7 @@ ClangPath=${MainClangZipPath}
 [[ "$(pwd)" != "${MainPath}" ]] && cd "${MainPath}"
 mkdir $ClangPath
 rm -rf $ClangPath/*
-wget -q  https://gitlab.com/PixelOS-Devices/playgroundtc/-/archive/17/playgroundtc-17.tar.gz -O "playgroundtc-17.tar.gz"
-tar -xf playgroundtc-17.tar.gz -C $ClangPath
+git clone --depth=1 https://gitlab.com/PixelOS-Devices/playgroundtc -b 17 $ClangPath
 
 mkdir $GCCaPath
 mkdir $GCCbPath
