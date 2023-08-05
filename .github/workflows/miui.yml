@@ -25,6 +25,6 @@ jobs:
            bash initialize
         - name: Starting build
           run: |
-           git clone --depth=1 https://github.com/SoniC-XIV/SupeRSoniC_V3 -b Project SONIC
+           git clone --depth=1 https://github.com/Novik-XIV/LINUX-KERNEL-SM6150 -b BACKUP SONIC
            cp miui.sh SONIC && cd SONIC
            chmod +x miui.sh && bash miui.sh
