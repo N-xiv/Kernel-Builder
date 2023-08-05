@@ -52,8 +52,6 @@ cd ${KERNEL_ROOTDIR}
 make -j$(nproc) O=out ARCH=arm64 $DEVICE_DEFCONFIG
 make -j$(nproc) ARCH=arm64 O=out \
     LD_LIBRARY_PATH="${ClangPath}/lib64:${LD_LIBRARY_PATH}" \
-    LLVM=1 \
-    LLVM_IAS=1 \
     NM=${ClangPath}/bin/llvm-nm \
     CXX=${ClangPath}/bin/clang++ \
     AR=${ClangPath}/bin/llvm-ar \
